@@ -3,17 +3,61 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blackack Game</title>
+    <title>Blackjack Game</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <h1>Blackjack</h1>
-    <p id="message-el">Want to play a round?</p>
-    <p id="cards-el">Cards:</p>
-    <p id="sum-el">Sum:</p>
-    <button onclick="startGame()">START GAME</button>
-    <button onclick="newCard()">NEW CARD</button>
-    <p id="player-el"></p>
-    <script src="index.js" defer></script>
+    <div class="game-container">
+      <header>
+        <h1>Blackjack</h1>
+        <div class="player-info">
+          <p id="player-name">Rushi</p>
+          <p id="player-chips">Chips: ₹<span id="chips-value">145</span></p>
+        </div>
+      </header>
+
+      <main>
+        <div class="betting-section">
+          <h3>Place Your Bet</h3>
+          <div class="bet-controls">
+            <button class="bet-btn" data-bet="10">₹10</button>
+            <button class="bet-btn" data-bet="25">₹25</button>
+            <button class="bet-btn" data-bet="50">₹50</button>
+            <button class="bet-btn" data-bet="100">₹100</button>
+          </div>
+          <p class="current-bet">
+            Current Bet: <span id="current-bet-value">0</span>
+          </p>
+        </div>
+
+        <div class="game-area">
+          <div class="dealer-area">
+            <h2>Dealer</h2>
+            <div id="dealer-cards" class="cards-container"></div>
+            <p id="dealer-sum" class="sum-display">Sum: ?</p>
+          </div>
+
+          <div class="player-area">
+            <h2>Your Hand</h2>
+            <div id="player-cards" class="cards-container"></div>
+            <p id="player-sum" class="sum-display">Sum: 0</p>
+          </div>
+        </div>
+
+        <div class="message-area">
+          <p id="message-el">Welcome! Place your bet to start.</p>
+        </div>
+
+        <div class="controls">
+          <button id="start-btn" class="game-btn">DEAL</button>
+          <button id="hit-btn" class="game-btn" disabled>HIT</button>
+          <button id="stand-btn" class="game-btn" disabled>STAND</button>
+          <button id="double-btn" class="game-btn" disabled>DOUBLE</button>
+          <button id="new-game-btn" class="game-btn">NEW GAME</button>
+        </div>
+      </main>
+    </div>
+
+    <script src="index.js"></script>
   </body>
 </html>

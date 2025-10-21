@@ -1,30 +1,321 @@
 /* Complete the CSS styling according to the provided design */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
 
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
-  background-image: url("Images/table.png");
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+    url("https://images.unsplash.com/photo-1531299204818-ea1d78e1b3de?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80");
   background-size: cover;
-  text-align: center;
+  background-position: center;
+  background-attachment: fixed;
   color: white;
   font-weight: bold;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.game-container {
+  background: rgba(0, 50, 0, 0.85);
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 100%;
+  max-width: 800px;
+  padding: 20px;
+  border: 2px solid goldenrod;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 2px solid goldenrod;
+  padding-bottom: 15px;
 }
 
 h1 {
   color: goldenrod;
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.player-info {
+  text-align: right;
+}
+
+.player-info p {
+  margin: 5px 0;
+}
+
+.betting-section {
+  background: rgba(0, 80, 0, 0.7);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.betting-section h3 {
+  color: goldenrod;
+  margin-bottom: 10px;
+}
+
+.bet-controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 15px 0;
+  flex-wrap: wrap;
+}
+
+.bet-btn {
+  background: goldenrod;
+  color: #016f32;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.bet-btn:hover {
+  background: #daa520;
+  transform: translateY(-2px);
+}
+
+.bet-btn.active {
+  background: #ffd700;
+  box-shadow: 0 0 10px gold;
+}
+
+.current-bet {
+  font-size: 1.2rem;
+  color: goldenrod;
+}
+
+.game-area {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 20px;
+}
+
+.dealer-area,
+.player-area {
+  flex: 1;
+  background: rgba(0, 80, 0, 0.7);
+  border-radius: 10px;
+  padding: 15px;
+  text-align: center;
+}
+
+.dealer-area h2,
+.player-area h2 {
+  color: goldenrod;
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+}
+
+.cards-container {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  min-height: 120px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.card {
+  width: 80px;
+  height: 112px;
+  background: white;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-back {
+  background: linear-gradient(45deg, #8b0000, #b22222);
+  border: 2px solid #ffd700;
+}
+
+.card-value {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.card-suit {
+  position: absolute;
+  font-size: 1.2rem;
+}
+
+.card-suit.top {
+  top: 5px;
+  left: 5px;
+}
+
+.card-suit.bottom {
+  bottom: 5px;
+  right: 5px;
+  transform: rotate(180deg);
+}
+
+.hearts,
+.diamonds {
+  color: #ff0000;
+}
+
+.clubs,
+.spades {
+  color: #000000;
+}
+
+.sum-display {
+  font-size: 1.2rem;
+  color: white;
+  margin-top: 10px;
+}
+
+.message-area {
+  background: rgba(0, 80, 0, 0.7);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: center;
 }
 
 #message-el {
   font-style: italic;
+  font-size: 1.3rem;
+  color: goldenrod;
+  min-height: 30px;
 }
 
-button {
+.controls {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.game-btn {
   color: #016f32;
-  width: 150px;
+  width: 120px;
   background: goldenrod;
   font-weight: bold;
-  padding: 5px 10px;
+  padding: 10px 15px;
   border: none;
-  border-radius: 3px;
-  margin: 2px 0px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+}
+
+.game-btn:hover:not(:disabled) {
+  background: #daa520;
+  transform: translateY(-2px);
+}
+
+.game-btn:disabled {
+  background: #666;
+  color: #999;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.game-btn:active:not(:disabled) {
+  transform: translateY(1px);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .game-container {
+    padding: 15px;
+  }
+
+  header {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+
+  .game-area {
+    flex-direction: column;
+  }
+
+  .dealer-area,
+  .player-area {
+    margin-bottom: 15px;
+  }
+
+  .card {
+    width: 70px;
+    height: 98px;
+  }
+
+  .card-value {
+    font-size: 1.5rem;
+  }
+
+  .game-btn {
+    width: 100px;
+    padding: 8px 10px;
+    font-size: 0.9rem;
+  }
+
+  .bet-controls {
+    gap: 5px;
+  }
+
+  .bet-btn {
+    padding: 6px 10px;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .game-container {
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.8rem;
+  }
+
+  .card {
+    width: 60px;
+    height: 84px;
+  }
+
+  .card-value {
+    font-size: 1.3rem;
+  }
+
+  .game-btn {
+    width: 90px;
+    padding: 7px 5px;
+    font-size: 0.8rem;
+  }
+
+  .controls {
+    gap: 5px;
+  }
 }
